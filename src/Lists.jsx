@@ -36,7 +36,7 @@ const Lists = (props) => {
   return (
     <div
       className={`group bg-gray-200 flex justify-between items-center p-2 rounded-md overflow-hidden duration-200 ${
-        props.isDone ? "bg-gray-200 opacity-40 scale-90 pointer-events-none" : ""
+        props.isDone ? "bg-gray-300 opacity-40 scale-90 pointer-events-none" : ""
       }`}
     >
       <div className="flex gap-4">

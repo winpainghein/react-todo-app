@@ -64,8 +64,8 @@ const App = () => {
   };
 
   return (
-    <main className="min-h-screen bg-black w-screen flex flex-col">
-      <div className="w-[400px] bg-gray-100 p-[40px] rounded-md flex flex-col mx-auto mt-[40px]">
+    <main className="min-h-screen w-screen flex flex-col">
+      <div className="w-[400px] p-[40px] rounded-md flex flex-col mx-auto mt-[40px]">
         <Heading />
         <ListForm addTask={addTask} />
         <ListStatus tasks={tasks} />

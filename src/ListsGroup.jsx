@@ -4,7 +4,7 @@ import Lists from "./Lists";
 
 const ListsGroup = (props) => {
   return (
-    <div className="bg-gray-300 p-3 rounded-md flex flex-col gap-3">
+    <div className="bg-gray-100 p-3 rounded-md flex flex-col gap-3">
       <EmptyState />
       {props.tasks.map((task) => (
         <Lists

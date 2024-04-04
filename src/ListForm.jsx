@@ -15,7 +15,7 @@ const ListForm = (props) => {
         onChange={handleTextInput}
         value={text}
         type="text"
-        className="bg-gray-300 px-4 py-2 rounded-s-full focus:outline-none flex-grow"
+        className="bg-gray-200 px-4 py-2 rounded-s-full focus:outline-none flex-grow"
         placeholder="Enter your tasks"
       />
       <button 
