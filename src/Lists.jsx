@@ -26,7 +26,7 @@ const Lists = (props) => {
   };
 
   const handleNewJobInputUpdate = (event) => {
-     if(event.key === "Escape"){
+     if(event.key === "Escape" || event.key === "Enter"){
       props.editTask(newJob,props.id);
       setEdit(false);
      }
