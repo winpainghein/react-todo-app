@@ -48,11 +48,11 @@ const Lists = (props) => {
         />
         {isEdit ? (
           <input
-            type="text rounded-lg"
+            type="text"
             value={newJob}
             onChange={handleNewJobInput}
             onKeyUp={handleNewJobInputUpdate}
-            className="border text-sm py-1 px-2"
+            className="border text-xs py-1 px-2 rounded-md"
           />
         ) : (
           <p className={`text-sm ${props.isDone && "line-through"}`}>
