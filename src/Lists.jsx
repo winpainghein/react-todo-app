@@ -48,7 +48,7 @@ const Lists = (props) => {
         />
         {isEdit ? (
           <input
-            type="text rounded-md"
+            type="text rounded-lg"
             value={newJob}
             onChange={handleNewJobInput}
             onKeyUp={handleNewJobInputUpdate}
