@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import toast from 'react-hot-toast';
+
 
 const ListForm = (props) => {
   const [text,setTask] = useState("");
@@ -8,10 +10,17 @@ const ListForm = (props) => {
   const handleAddBtn = () => {
     props.addTask(text);
     setTask("");
+    toast.success("List created");
   };
+  const handleEnter = (event) => {
+    if(event.key === "Enter"){
+      handleAddBtn()
+    }
+  }
   return (
     <div className="border-gray-400 border-2 rounded-full p-1 flex gap-1 mb-6">
       <input
+        onKeyUp={handleEnter}
         onChange={handleTextInput}
         value={text}
         type="text"

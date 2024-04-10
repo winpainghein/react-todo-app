@@ -4,6 +4,7 @@ import ListForm from "./ListForm";
 import ListStatus from "./ListStatus";
 import EmptyState from "./EmptyState";
 import ListsGroup from "./ListsGroup";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   const [tasks, setTask] = useState([
@@ -52,7 +53,7 @@ const App = () => {
     setTask(tasks.filter((task) => id !== task.id));
   };
 
-  const editTask = (newJob,id) => {
+  const editTask = (newJob, id) => {
     setTask(
       tasks.map((task) => {
         if (id === task.id) {
@@ -73,8 +74,9 @@ const App = () => {
           tasks={tasks}
           checkTask={checkTask}
           deleteTask={deleteTask}
-          editTask = {editTask}
+          editTask={editTask}
         />
+        <Toaster position="bottom-right" reverseOrder={false} />
       </div>
     </main>
   );

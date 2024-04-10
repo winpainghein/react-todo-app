@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Swal from "sweetalert2";
+import toast from 'react-hot-toast';
 
 const Lists = (props) => {
   // const [check,setCheck] = useState(false);
@@ -12,9 +14,28 @@ const Lists = (props) => {
   };
 
   const handleDelBtn = () => {
-    if (confirm("Are you sure to delete")) {
-      props.deleteTask(props.id);
-    }
+    // if (confirm("Are you sure to delete")) {
+    //   props.deleteTask(props.id);
+    // }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        props.deleteTask(props.id);
+        toast.success("List deleted");
+        // Swal.fire({
+        //   title: "Deleted!",
+        //   text: "Your file has been deleted.",
+        //   icon: "success"
+        // });
+      }
+    });
   };
 
   const handleEditBtn = () => {
@@ -35,7 +56,7 @@ const Lists = (props) => {
 
   return (
     <div
-      className={`group bg-gray-200 flex justify-between items-center p-2 rounded-md overflow-hidden duration-200 ${
+      className={`group animate__animated animate__fadeInLeft bg-gray-200 flex justify-between items-center p-2 rounded-md overflow-hidden duration-200 ${
         props.isDone ? "bg-gray-300 opacity-40 scale-90 pointer-events-none" : ""
       }`}
     >
