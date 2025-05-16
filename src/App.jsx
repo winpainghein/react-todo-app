@@ -70,8 +70,8 @@ const App = () => {
   };
 
   return (
-    <main className="min-h-screen w-screen">
-      <div className="max-w-[350px] max-h-[800px] p-10 rounded-md flex flex-col mx-auto">
+    <main className="min-h-screen w-screen flex justify-center items-center">
+      <div className="max-w-[350px] h-[700px] py-5 rounded-md flex flex-col mx-auto">
         <Heading />
         <ListForm addTask={addTask} />
         <ListStatus tasks={tasks} />
