@@ -71,7 +71,7 @@ const App = () => {
 
   return (
     <main className="min-h-screen w-screen">
-      <div className="max-w-[350px] max-h-[800px] py-10 rounded-md flex flex-col mx-auto">
+      <div className="max-w-[350px] max-h-[800px] p-10 rounded-md flex flex-col mx-auto">
         <Heading />
         <ListForm addTask={addTask} />
         <ListStatus tasks={tasks} />
