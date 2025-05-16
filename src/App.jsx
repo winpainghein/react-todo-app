@@ -28,6 +28,11 @@ const App = () => {
       job: "to run",
       isDone: false,
     },
+    {
+      id: 5,
+      job: "to run",
+      isDone: false,
+    }
   ]);
   const addTask = (job) => {
     const newTask = {
@@ -65,8 +70,8 @@ const App = () => {
   };
 
   return (
-    <main className="min-h-screen w-screen flex flex-col">
-      <div className="w-[400px] p-[40px] rounded-md flex flex-col mx-auto mt-[40px]">
+    <main className="min-h-screen w-screen">
+      <div className="max-w-[350px] max-h-[800px] py-10 rounded-md flex flex-col mx-auto">
         <Heading />
         <ListForm addTask={addTask} />
         <ListStatus tasks={tasks} />

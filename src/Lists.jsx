@@ -1,22 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Swal from "sweetalert2";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 
-const Lists = (props) => {
-  // const [check,setCheck] = useState(false);
-
+const Lists = ({task:{id,job,isDone},editTask,deleteTask,checkTask}) => {
+  const inputRef = useRef(null);
   const [isEdit, setEdit] = useState(false);
 
-  const [newJob,setNewJob] = useState(props.job);
+  const [newJob, setNewJob] = useState(job);
 
   const handleCheckbox = () => {
-    props.checkTask(props.id);
+    checkTask(id);
   };
 
   const handleDelBtn = () => {
-    // if (confirm("Are you sure to delete")) {
-    //   props.deleteTask(props.id);
-    // }
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -24,16 +20,11 @@ const Lists = (props) => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        props.deleteTask(props.id);
+        deleteTask(id);
         toast.success("List deleted");
-        // Swal.fire({
-        //   title: "Deleted!",
-        //   text: "Your file has been deleted.",
-        //   icon: "success"
-        // });
       }
     });
   };
@@ -43,41 +34,50 @@ const Lists = (props) => {
   };
 
   const handleNewJobInput = (event) => {
-     setNewJob(event.target.value)
+    setNewJob(event.target.value);
   };
 
   const handleNewJobInputUpdate = (event) => {
-     if(event.key === "Escape" || event.key === "Enter"){
-      props.editTask(newJob,props.id);
+    if (event.key === "Escape" || event.key === "Enter") {
+      editTask(newJob, id);
       setEdit(false);
-     }
-
+    }
   };
+  useEffect(() => {
+    if (isEdit && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isEdit]);
 
   return (
     <div
-      className={`group animate__animated animate__fadeInLeft bg-gray-200 flex justify-between items-center p-2 rounded-md overflow-hidden duration-200 ${
-        props.isDone ? "bg-gray-300 opacity-40 scale-90 pointer-events-none" : ""
+      className={`group animate__animated animate__fadeIn  flex justify-between items-center p-2 flex-shrink-0 rounded-md overflow-hidden duration-200 ${
+        isDone ? "bg-gray-200 scale-95" : "bg-gray-50"
       }`}
     >
       <div className="flex gap-4">
         <input
           type="checkbox"
-          checked={props.isDone}
+          checked={isDone}
           onChange={handleCheckbox}
-          disabled = {isEdit}
+          disabled={isEdit}
         />
         {isEdit ? (
           <input
+            ref={inputRef}
             type="text"
             value={newJob}
             onChange={handleNewJobInput}
             onKeyUp={handleNewJobInputUpdate}
+            onBlur={() => {
+              editTask(newJob, id);
+              setEdit(false);
+            }}
             className="border text-xs py-1 px-2 rounded-md"
           />
         ) : (
-          <p className={`text-sm ${props.isDone && "line-through"}`}>
-            {props.job}
+          <p className={`text-base ${isDone && "line-through"}`}>
+            {job}
           </p>
         )}
       </div>

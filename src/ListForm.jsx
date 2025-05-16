@@ -8,9 +8,13 @@ const ListForm = (props) => {
     setTask(event.target.value);
   };
   const handleAddBtn = () => {
+    if(text){
     props.addTask(text);
     setTask("");
-    toast.success("List created");
+    toast.success("List created");}
+    else{
+      toast.error("required at least one word or space")
+    }
   };
   const handleEnter = (event) => {
     if(event.key === "Enter"){
@@ -24,7 +28,7 @@ const ListForm = (props) => {
         onChange={handleTextInput}
         value={text}
         type="text"
-        className="bg-gray-200 px-4 py-2 rounded-s-full focus:outline-none flex-grow"
+        className="bg-gray-200 px-4 py-2 rounded-s-full focus:outline-none flex-grow placeholder:text-lg"
         placeholder="Enter your tasks"
       />
       <button 
