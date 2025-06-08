@@ -55,12 +55,14 @@ const Lists = ({
   const handleNewJobInputUpdate = (event) => {
     if (event.key === "Escape" || event.key === "Enter") {
       editTask(newJob, id);
+      !newJob && deleteTask(id);
       setEdit(false);
     }
   };
 
   const handleBlur = () => {
     editTask(newJob, id);
+    !newJob && deleteTask(id);
     setEdit(false);
   };
 
