@@ -45,6 +45,7 @@ const Lists = ({
 
   const saveEdit = () => {
     editTask(newJob, id);
+    !newJob && deleteTask(id);
     setEdit(false);
   };
 
